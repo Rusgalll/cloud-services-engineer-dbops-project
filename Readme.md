@@ -16,4 +16,4 @@
 Создаем схему (если используется отдельная схема) и выдаём права: <br>
 `GRANT ALL PRIVILEGES ON SCHEMA public TO dbops_user;`
 
-## 2)  
+## 2)   
