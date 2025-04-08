@@ -26,10 +26,7 @@ jobs:
         FLYWAY_USER: ${{ secrets.DB_USER }}
         FLYWAY_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: |
-        echo "FLYWAY_URL=${FLYWAY_URL}"
-        echo "FLYWAY_USER=${FLYWAY_USER}"
-        echo "FLYWAY_PASSWORD=${FLYWAY_PASSWORD}"
-        flyway migrate -locations=filesystem:migrations
+        flyway migrate -baselineOnMigrate=true -locations=filesystem:migrations
 
     ### Этот шаг оставьте без изменений
     - name: Download and setup autotests binaries
