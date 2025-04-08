@@ -10,7 +10,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    #### Добавьте шаг с Flyway-миграциями
+    # Шаг для запуска миграций Flyway
+      - name: Flyway Migration
+        run: |
+          # Загрузка Flyway Command-line
+          wget -qO flyway.tar.gz https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.5.13/flyway-commandline-8.5.13-linux-x64.tar.gz
+          tar -xzf flyway.tar.gz
+          # Запуск миграций к базе данных "store"
+          ./flyway-8.5.13/flyway -url="jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/store" -user="${{ secrets.DB_USER }}" -password="${{ secrets.DB_PASSWORD }}" migrate
 
     ### Этот шаг оставьте без изменений
     - name: Download and setup autotests binaries
