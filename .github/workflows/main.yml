@@ -26,6 +26,7 @@ jobs:
         FLYWAY_USER: ${{ secrets.DB_USER }}
         FLYWAY_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: |
+        flyway repair -locations=filesystem:migrations
         flyway migrate -locations=filesystem:migrations
 
     ### Этот шаг оставьте без изменений
