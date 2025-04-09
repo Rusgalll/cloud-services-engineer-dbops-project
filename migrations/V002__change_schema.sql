@@ -2,11 +2,11 @@
 
 -- Добавление нужных полей
 ALTER TABLE product
-    ADD COLUMN price DOUBLE PRECISION NOT NULL CHECK (price > 0);
+    ADD COLUMN price DOUBLE PRECISION NOT NULL CHECK (price > 0),
     ADD CONSTRAINT product_pkey PRIMARY KEY (id);
 
 ALTER TABLE orders
-    ADD COLUMN date_created DATE NOT NULL;
+    ADD COLUMN date_created DATE NOT NULL,
     ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
 
 -- Добавлние связей между таблицами
